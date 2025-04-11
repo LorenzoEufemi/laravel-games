@@ -13,7 +13,14 @@
             </div>
             <div class="mb-3">
                 <label for="genre" class="form-label">Genere</label>
-                <input type="text" class="form-control" id="genre" name="genre" required>
+                <select class="form-control" id="genre" name="genre" required>
+                    <option value="">Seleziona un genere</option>
+                    <option value="Action">Action</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="RPG">RPG</option>
+                    <option value="Strategy">Strategy</option>
+                    <option value="Sport">Sport</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="developer" class="form-label">Sviluppatore</label>
@@ -25,7 +32,12 @@
             </div>
             <div class="mb-3">
                 <label for="mode" class="form-label">Modalità di gioco</label>
-                <input type="text" class="form-control" id="mode" name="mode">
+                <select class="form-control" id="mode" name="mode" required>
+                    <option value="">Seleziona una modalità</option>
+                    <option value="Single Player">Single Player</option>
+                    <option value="Multiplayer">Multiplayer</option>
+                    <option value="Co-op">Co-op</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine</label>

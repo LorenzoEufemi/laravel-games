@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Game;
+use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
@@ -36,17 +37,19 @@ class GameController extends Controller
     {
         $data = $request->all();
         $newGame = new Game();
-        $newGame->name = $data['title'];
+        $newGame->title = $data['title'];
         $newGame->description = $data['description'];
-        $newGame->release_date = $data['genre'];
-        $newGame->genre = $data['developer'];
-        $newGame->developer = $data['mode'];
+        $newGame->genre= $data['genre'];
+        $newGame->developer = $data['developer'];
+        $newGame->mode = $data['mode'];
 
         if(array_key_exists('image', $data)) {
             $newGame->image = $data['image'];
         }
 
         $newGame->save();
+        
+        return redirect()->route('games.index')->with('success', 'Game created successfully.');
 
         
     }
@@ -66,18 +69,36 @@ class GameController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Game $game)
     {
-        //
+        // Return the view to edit the game
+        return view('admin.games.edit', compact('game'));
     }
+   
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Game $game)
     {
-        //
+        $data = $request->all();
+        $game->title = $data['title'];
+        $game->description = $data['description'];
+        $game->genre = $data['genre'];
+        $game->developer = $data['developer'];
+        $game->mode = $data['mode'];
+
+        if(array_key_exists('image', $data)) {
+            Storage::delete($game->image);
+            $img_url= Storage::putFile('games', $data['image']);
+            $game->image = $img_url;
+        }
+
+        $game->update();
+
+        return redirect()->route('games.show', $game)->with('success', 'Game updated successfully.');
     }
+    
 
     /**
      * Remove the specified resource from storage.
