@@ -117,13 +117,18 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        if($game->image) {
-            Storage::delete($game->image);
+        // Scollega tutte le piattaforme associate al gioco
+        $game->platforms()->detach();
+    
+        // Elimina l'immagine associata (se esiste)
+        if ($game->image) {
+            Storage::delete('imageGames/' . $game->image);
         }
-
+    
+        // Elimina il gioco
         $game->delete();
-
-        
+    
         return redirect()->route('games.index')->with('success', 'Game deleted successfully.');
     }
+    
 }

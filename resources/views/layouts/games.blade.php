@@ -19,10 +19,12 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            font-family: Arial, sans-serif;
         }
 
         main {
             flex: 1;
+            background-color: #E6E6FA;
         }
     </style>
 </head>
@@ -32,7 +34,7 @@
     @include('partials.header')
 
 
-    <main class="container my-4">
+    <main class="">
 
         @yield('content')
 

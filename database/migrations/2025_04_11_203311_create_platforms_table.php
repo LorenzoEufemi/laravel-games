@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('producer');
+            $table->string('color', 7)->default('#000000');
             $table->timestamps();
         });
     }

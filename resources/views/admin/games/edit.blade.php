@@ -3,7 +3,9 @@
 @section('content')
 
     <div class="container">
-        <h1>Modifica Gioco</h1>
+         <a href="{{ route('games.index') }}" class="btn btn-primary mt-3 mb-3">Torna alla lista</a>
+        <h1>Modifica Videogioco</h1>
+       
 
         <form action="{{ route('games.update', $game) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -68,6 +70,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Aggiorna Gioco</button>
         </form>
+        
 
     </div>
 @endsection

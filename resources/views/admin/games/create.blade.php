@@ -3,7 +3,8 @@
 @section('content')
 
     <div class="container">
-        <h1>Crea Gioco</h1>
+        <a href="{{ route('games.index') }}" class="btn btn-primary mt-3 mb-3">Torna alla lista</a>
+        <h1>Crea Videogioco</h1>
 
         <form action="{{ route('games.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
