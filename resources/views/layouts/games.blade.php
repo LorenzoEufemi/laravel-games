@@ -7,6 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     @vite('resources/js/app.js')
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,24 +32,11 @@
     @include('partials.header')
 
 
-    <div class="container">
-
-
-
-
+    <main class="container my-4">
 
         @yield('content')
 
-
-
-
-
-
-
-
-
-
-    </div>
+    </main>
 
 
     @include('partials.footer')

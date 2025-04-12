@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Game;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\Platform;
 class GameController extends Controller
 {
     /**
@@ -26,8 +26,8 @@ class GameController extends Controller
      */
     public function create()
     {
-        // Return the view to create a new game
-        return view('admin.games.create');
+        $platforms = Platform::all();
+        return view('admin.games.create', compact('platforms'));
     }
 
     /**
@@ -44,12 +44,17 @@ class GameController extends Controller
         $newGame->mode = $data['mode'];
 
         if(array_key_exists('image', $data)) {
-            $newGame->image = $data['image'];
-        }
+            $img_url= Storage::putFile('imageGames', $data['image']);
+            $newGame->image = $img_url;
+        } 
 
         $newGame->save();
+
+        if($request->has('platforms')) {
+            $newGame->platforms()->attach($data['platforms']);
+        }
         
-        return redirect()->route('games.index')->with('success', 'Game created successfully.');
+        return redirect()->route('games.show',$newGame)->with('success', 'Game created successfully.');
 
         
     }
@@ -71,8 +76,8 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        // Return the view to edit the game
-        return view('admin.games.edit', compact('game'));
+       $platforms = Platform::all();
+        return view('admin.games.edit', compact('game', 'platforms'));
     }
    
 
@@ -90,11 +95,18 @@ class GameController extends Controller
 
         if(array_key_exists('image', $data)) {
             Storage::delete($game->image);
-            $img_url= Storage::putFile('games', $data['image']);
+            $img_url= Storage::putFile('imageGames', $data['image']);
             $game->image = $img_url;
         }
 
         $game->update();
+        if($request->has('platforms')) {
+            $game->platforms()->sync($data['platforms']);
+        } else {
+            $game->platforms()->detach();
+        }
+
+         // Save the game
 
         return redirect()->route('games.show', $game)->with('success', 'Game updated successfully.');
     }
@@ -103,8 +115,15 @@ class GameController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Game $game)
     {
-        //
+        if($game->image) {
+            Storage::delete($game->image);
+        }
+
+        $game->delete();
+
+        
+        return redirect()->route('games.index')->with('success', 'Game deleted successfully.');
     }
 }

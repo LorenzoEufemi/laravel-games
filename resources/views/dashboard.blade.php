@@ -1,26 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.games')
+@section('title', 'Dashboard')
 
 @section('content')
-<div class="container">
-    <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
-    </h2>
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
+    <div class="container">
+        <h1>Benvenuto nella Dashboard</h1>
+        <p>Qui puoi gestire i tuoi giochi e le tue recensioni.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Giochi</h2>
+                <a href="{{ route('games.index') }}" class="btn btn-primary">Gestisci Giochi</a>
             </div>
+           
         </div>
     </div>
-</div>
 @endsection

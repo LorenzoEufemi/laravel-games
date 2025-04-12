@@ -6,6 +6,7 @@ use App\Models\Game;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Platform;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,10 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-       $this->call([
+        $this->call([
+            PlatformsTableSeeder::class,
             GamesTableSeeder::class,
+            GamePlatformTableSeeder::class,
         ]);
-
-        
     }
 }

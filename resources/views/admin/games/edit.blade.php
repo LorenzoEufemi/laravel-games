@@ -56,6 +56,16 @@
                     <img src="{{ asset('storage/' . $game->image) }}" alt="{{ $game->title }}" width="100">
                 @endif
             </div>
+            <div class="mb-3">
+                @foreach ($platforms as $platform)
+                    <div>
+                        <input type="checkbox" id="platform-{{ $platform->id }}" name="platforms[]"
+                            value="{{ $platform->id }}" {{ $game->platforms->contains($platform) ? 'checked' : '' }}>
+                        <label for="platform-{{ $platform->id }}">{{ $platform->name }}</label>
+                    </div>
+                @endforeach
+
+            </div>
             <button type="submit" class="btn btn-primary">Aggiorna Gioco</button>
         </form>
 

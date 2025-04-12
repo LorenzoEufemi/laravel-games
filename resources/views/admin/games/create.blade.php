@@ -34,7 +34,7 @@
                 <label for="mode" class="form-label">Modalità di gioco</label>
                 <select class="form-control" id="mode" name="mode" required>
                     <option value="">Seleziona una modalità</option>
-                    <option value="Single Player">Single Player</option>
+                    <option value="SinglePlayer">SinglePlayer</option>
                     <option value="Multiplayer">Multiplayer</option>
                     <option value="Co-op">Co-op</option>
                 </select>
@@ -42,6 +42,15 @@
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine</label>
                 <input type="file" class="form-control" id="image" name="image">
+            </div>
+            <div class="mb-3">
+                @foreach($platforms as $platform)
+                <div>
+                    <input type="checkbox" id="platform-{{ $platform->id }}" name="platforms[]" value="{{ $platform->id }}">
+                    <label for="platform-{{ $platform->id }}">{{ $platform->name }}</label>
+                </div>
+                @endforeach
+            
             </div>
 
 

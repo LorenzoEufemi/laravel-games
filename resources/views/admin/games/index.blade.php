@@ -21,12 +21,20 @@
                         <td>{{ $game->developer }}</td>
                         <td> <a href="{{ route('games.show', $game->id) }}" class="btn btn-info">Visualizza</a></td>
                         <td> <a href="{{ route('games.edit', $game->id) }}" class="btn btn-warning">Modifica</a></td>
+                        <td>
+                            <form action="{{ route('games.destroy', $game->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Elimina</button>
+                            </form>
+                        </td>
 
 
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <a class="btn btn-primary" href="{{ route('dashboard')}}">Torna alla Dashboard</a>
 
 
     </div>
