@@ -6,7 +6,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'], // <-- metti l'URL del tuo frontend React
+    'allowed_origins' => ['http://localhost:5173'], // <-- metti l'URL del tuo frontend React
 
     'allowed_origins_patterns' => [],
 
