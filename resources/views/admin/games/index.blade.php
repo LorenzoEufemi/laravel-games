@@ -43,7 +43,7 @@
                 </tbody>
             </table>
         </div>
-        <a class="btn btn-primary mt-4" href="{{ route('dashboard') }}">Torna alla Dashboard</a>
+        <a class="btn btn-primary mt-4 mb-5" href="{{ route('dashboard') }}">Torna alla Dashboard</a>
 
 
     </div>
