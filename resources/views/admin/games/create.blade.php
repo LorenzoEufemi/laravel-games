@@ -20,7 +20,7 @@
                     <option value="Adventure">Adventure</option>
                     <option value="RPG">RPG</option>
                     <option value="Strategy">Strategy</option>
-                    <option value="Sport">Sport</option>
+                    <option value="Sport">Sports</option>
                 </select>
             </div>
             <div class="mb-3">

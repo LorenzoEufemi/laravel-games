@@ -15,7 +15,7 @@
                 <input type="text" class="form-control" id="title" name="title" value="{{ $game->title }}" required>
             </div>
             @php
-                $generi = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sport'];
+                $generi = ['Action', 'Adventure', 'RPG', 'Strategy', 'Sports'];
             @endphp
 
             <div class="mb-3">
