@@ -7,7 +7,7 @@
         <h1>Modifica Videogioco</h1>
        
 
-        <form action="{{ route('games.update', $game) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('games.update', $game) }}" method="POST" enctype="multipart/form-data" class="mb-4">
             @csrf
             @method('PUT')
             <div class="mb-3">

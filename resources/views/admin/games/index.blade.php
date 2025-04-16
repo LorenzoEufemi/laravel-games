@@ -12,8 +12,8 @@
                         <th class="p-3">Titolo</th>
                         <th class="p-3">Genere</th>
                         <th class="p-3">Sviluppatore</th>
-                        <th class="p-3" colspan="3" >Azioni</th>
-                        
+                        <th class="p-3" colspan="3">Azioni</th>
+
 
 
                     </tr>
@@ -30,7 +30,7 @@
                                     class="btn btn-warning">Modifica</a></td>
                             <td class="p-2">
                                 <form action="{{ route('games.destroy', $game->id) }}" method="POST"
-                                    style="display:inline;">
+                                    onsubmit="return confirm('Sei sicuro di voler eliminare questo gioco?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Elimina</button>
