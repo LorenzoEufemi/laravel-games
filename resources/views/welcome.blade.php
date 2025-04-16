@@ -11,10 +11,7 @@
                 <h2>Giochi</h2>
                 <a href="{{ route('games.index') }}" class="btn btn-primary">Gestisci Giochi</a>
             </div>
-            <div class="col-md-6">
-                <h2>Recensioni</h2>
-                <a href="{{ route('reviews.index') }}" class="btn btn-primary">Gestisci Recensioni</a>
-            </div>
+            
         </div>
     </div>
 @endsection

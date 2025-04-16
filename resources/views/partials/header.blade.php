@@ -15,9 +15,7 @@
               <li class="nav-item">
                   <a class="nav-link {{ request()->is('profile') ? 'active' : '' }}" href="/profile">Profilo</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="/register">Registrati</a>
-              </li>
+                
           </ul>
       </div>
   </nav>
